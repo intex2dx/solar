@@ -58,7 +58,7 @@ def start_execution():
 
 
 def stop_execution():
-    """Обработчик события нажатия на кнопку Start.
+    """Обработчик события нажатия на кнопку Pause.
     Останавливает циклическое исполнение функции execution.
     """
     global perform_execution
