@@ -6,6 +6,7 @@ from tkinter.filedialog import *
 from solar_vis import *
 from solar_model import *
 from solar_input import *
+import matplotlib.pyplot as plt
 
 perform_execution = False
 """Флаг цикличности выполнения расчёта"""
@@ -52,7 +53,6 @@ def start_execution():
     perform_execution = True
     start_button['text'] = "Pause"
     start_button['command'] = stop_execution
-
     execution()
     print('Started execution...')
 
