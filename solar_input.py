@@ -117,7 +117,42 @@ def write_space_objects_data_to_file(output_filename, space_objects):
                                                               obj.Vy))
             # FIXME: should store real values
 
-# FIXME: хорошо бы ещё сделать функцию, сохранающую статистику в заданный файл...
+def save_statistics(space_objects):
+    """Сохраняет данные о космических объектах в файл.
+    Строки должны иметь следующий формат:
+    Star <радиус в пикселах> <цвет> <масса> <x> <y> <Vx> <Vy>
+    Planet <радиус в пикселах> <цвет> <масса> <x> <y> <Vx> <Vy>
+
+    Параметры:
+
+    **output_filename** — имя входного файла
+    **space_objects** — список объектов планет и звёзд
+    """
+    with open("stats.txt", 'a') as out_file:
+        for obj in space_objects:
+            #print(out_file, "%s %d %s %f" % ('1', 2, '3', 4.5))
+            if obj.type == 'star':
+                out_file.write('Star %d %s %s %f %f %f %f \n' % (obj.R,
+                                                              obj.color,
+                                                              obj.m,
+                                                              obj.x,
+                                                              obj.y,
+                                                              obj.Vx,
+                                                              obj.Vy))
+            else:
+                out_file.write('Planet %d %s %s %f %f %f %f \n' % (obj.R,
+                                                              obj.color,
+                                                              obj.m,
+                                                              obj.x,
+                                                              obj.y,
+                                                              obj.Vx,
+                                                              obj.Vy))
+        out_file.write("\n")
+
+
+def clear_statistics():
+    with open("stats.txt", 'w') as out_file:
+        out_file.write("")
 
 if __name__ == "__main__":
     print("This module is not for direct call!")

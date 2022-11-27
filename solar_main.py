@@ -40,6 +40,8 @@ def execution():
         update_object_position(space, body)
     physical_time += time_step.get()
     displayed_time.set("%.1f" % physical_time + " seconds gone")
+    save_statistics(space_objects)
+
 
     if perform_execution:
         space.after(101 - int(time_speed.get()), execution)
@@ -112,6 +114,7 @@ def main():
     global space
     global start_button
 
+    clear_statistics()
     print('Modelling started!')
     physical_time = 0
 
