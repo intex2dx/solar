@@ -2,7 +2,7 @@
 # license: GPLv3
 
 from solar_objects import Star, Planet
-
+import matplotlib.pyplot as plt
 
 def read_space_objects_data_from_file(input_filename):
     """Cчитывает данные о космических объектах из файла, создаёт сами объекты
@@ -153,6 +153,14 @@ def save_statistics(space_objects):
 def clear_statistics():
     with open("stats.txt", 'w') as out_file:
         out_file.write("")
+
+def make_point(obj, t, ax_v, ax_r, ax_vr):
+    r = (obj.x**2 + obj.y**2)**0.5
+    v =  (obj.Vx**2 + obj.Vy**2)**0.5
+    ax_r.scatter(t, r, color="red", s=1)
+    ax_v.scatter(t,v, color="red", s=1)
+    ax_vr.scatter(r,v, color="red", s=1)
+
 
 if __name__ == "__main__":
     print("This module is not for direct call!")
